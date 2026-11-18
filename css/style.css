@@ -259,6 +259,47 @@ h6,
 .page-header > .container {
     width: 100%;
 }
+
+/* Mobile: show the whole banner at full width; height follows the image
+   ratio (1376x768) so it is never stretched or cropped */
+@media (max-width: 767.98px) {
+    .hero-header,
+    .page-header {
+        background-size: 100% auto;
+        background-position: top center;
+        background-color: #2b2b2b;
+        min-height: calc(100vw * 768 / 1376);
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .page-header > .container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .page-header h1.display-2 {
+        font-size: 2rem;
+    }
+
+    .hero-header .row {
+        --bs-gutter-y: 0.5rem;
+    }
+
+    .hero-header .hero-tag {
+        font-size: 1rem !important;
+        margin-bottom: .5rem !important;
+    }
+
+    .hero-header .hero-title {
+        font-size: 1.4rem;
+        margin-bottom: .75rem !important;
+    }
+
+    .hero-header .btn {
+        padding: .5rem 1.25rem !important;
+    }
+}
 /*** Hero Header ***/
 
 

@@ -84,7 +84,7 @@ class SiteHeader extends HTMLElement {
         const active = this.getAttribute('active');
         if (active) {
             const link = this.querySelector(`.navbar-nav a[href="${active}"]`);
-            if (link) link.classList.add('active');
+            if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'page'); }
         }
     }
 }

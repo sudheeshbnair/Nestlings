@@ -1,0 +1,292 @@
+/* ==========================================================================
+   Nestlings visual system – theme layer
+   Loaded AFTER css/style.css on every page. Changes colour, type, shape and
+   motion only; layout and markup are untouched. Delete this file (and its
+   <link>/<script> lines) to go back to the previous look.
+   ========================================================================== */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  /* Palette sampled from the logo: the three birds (yellow, pink, blue) */
+  --nl-blue-deep: #1b6f86;          /* primary text/buttons: deeper shade of the blue bird (5.7:1 on white). The exact bird blue is --nl-blue */
+  --nl-blue-dark: #0f4a5c;     /* hover / dark bars */
+  --nl-accent: #b8520a;        /* orange from the wordmark, darkened for text (5:1 on cream) */
+  --nl-ink: #1d3640;           /* body text */
+  --nl-muted: #4c6670;
+
+  --nl-yellow: #fccc48;        /* yellow bird */
+  --nl-coral:  #f09084;        /* pink bird */
+  --nl-blue:   #48b4cc;        /* blue bird */
+  --nl-yellow-soft: #ffe9a6;   /* tints used as card backgrounds (keep text readable) */
+  --nl-coral-soft:  #fbcfc8;
+
+  --nl-cream: #fffbf1;
+  --nl-cream-2: #fff1cf;
+  --nl-footer: #fde9e5;
+
+  --nl-radius: 24px;
+  --nl-radius-lg: 32px;
+  --nl-pill: 999px;
+  --nl-shadow-sm: 0 2px 8px rgba(27, 111, 134, 0.08);
+  --nl-shadow: 0 10px 30px rgba(27, 111, 134, 0.12);
+  --nl-shadow-lg: 0 18px 44px rgba(27, 111, 134, 0.18);
+  --nl-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Re-point Bootstrap's variables so everything in style.css that uses
+     var(--bs-primary / secondary / light / dark) follows the new palette */
+  --bs-primary: #1b6f86;
+  --bs-secondary: #b8520a;
+  --bs-light: #fff1cf;
+  --bs-dark: #0f4a5c;
+}
+
+/* ---------- 2. Typography ---------- */
+body {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--nl-ink);
+  background-color: var(--nl-cream);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+  font-family: "Fredoka", "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--nl-blue-deep);
+}
+h5, h6, .h5, .h6 { font-weight: 600; letter-spacing: 0; }
+
+.display-2 { font-size: clamp(2.4rem, 5vw + 0.5rem, 3.6rem); }
+.display-3 { font-size: clamp(2rem, 3.6vw + 0.5rem, 3rem); }
+.display-5 { font-size: clamp(1.65rem, 2.6vw + 0.5rem, 2.35rem); }
+
+.text-dark { color: var(--nl-ink) !important; }
+h1.text-dark, h2.text-dark { color: var(--nl-blue-deep) !important; }
+.text-primary { color: var(--nl-blue-deep) !important; }
+.text-secondary { color: var(--nl-accent) !important; }
+.text-muted { color: var(--nl-muted) !important; }
+a { color: var(--nl-blue-deep); }
+a:hover { color: var(--nl-blue-dark); }
+
+.hero-header .text-white,
+.page-header .text-white { color: #fff !important; }
+
+/* ---------- 3. Surfaces (Bootstrap utilities are hard-coded + !important) ---------- */
+.bg-light   { background-color: var(--nl-cream-2) !important; }
+.bg-white   { background-color: #fff !important; }
+.bg-primary { background-color: var(--nl-blue-deep) !important; }
+.bg-dark    { background-color: var(--nl-blue-dark) !important; }
+.border-primary { border-color: var(--nl-blue-deep) !important; }
+
+/* ---------- 4. Buttons ---------- */
+.btn { font-weight: 600; letter-spacing: 0.01em; }
+.btn-border-radius,
+.btn.btn-primary { border-radius: var(--nl-pill) !important; }  /* square buttons stay circles */
+
+.btn.btn-primary {
+  background-color: var(--nl-blue-deep);
+  border-color: var(--nl-blue-deep);
+  color: #fff !important;
+  box-shadow: var(--nl-shadow-sm);
+  transition: transform 0.25s var(--nl-ease), box-shadow 0.25s var(--nl-ease), background-color 0.25s;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background: var(--nl-blue-dark);
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: var(--nl-shadow);
+}
+
+:focus-visible { outline: 3px solid var(--nl-accent); outline-offset: 3px; border-radius: 6px; }
+.hero-header :focus-visible, .copyright :focus-visible { outline-color: var(--nl-yellow); }
+
+/* ---------- 5. Section labels ---------- */
+.title-border-radius {
+  background: var(--nl-yellow);
+  color: var(--nl-blue-deep) !important;
+  border: 0 !important;
+  border-radius: var(--nl-pill) !important;
+  padding: 0.35rem 1.1rem !important;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- 6. Header / nav ---------- */
+.fixed-top.bg-light { box-shadow: 0 4px 18px rgba(27, 111, 134, 0.1); }
+.topbar.bg-primary { background: var(--nl-blue) !important; }
+.topbar a, .topbar .text-white, .topbar .text-secondary { color: var(--nl-blue-dark) !important; }
+/* Nav links: current page is shown by text colour only */
+.navbar .navbar-nav .nav-link {
+  color: var(--nl-ink);
+  padding: 10px 14px;
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link[aria-current="page"] {
+  background: none;
+  box-shadow: none;
+  color: var(--nl-accent);
+}
+#spinner .spinner-grow { color: var(--nl-blue-deep) !important; }
+
+/* ---------- 7. Hero & page headers ---------- */
+.hero-header .hero-tag {
+  background: var(--nl-yellow) !important;
+  color: var(--nl-blue-dark) !important;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+}
+
+/* ---------- 8. About photo frame ---------- */
+.video.border {
+  border: 0 !important;
+  border-radius: var(--nl-radius-lg) 120px var(--nl-radius-lg) var(--nl-radius-lg);
+  box-shadow: var(--nl-shadow);
+}
+
+/* ---------- 9. Programme / vision cards ---------- */
+.service { background: none; }
+.service + .service { background: var(--nl-cream-2); }
+
+.service .service-item {
+  border: 0 !important;
+  border-radius: var(--nl-radius);
+  background: #fff !important;
+  box-shadow: var(--nl-shadow-sm);
+  overflow: hidden;
+}
+.service .service-item:hover {
+  border: 0 !important;
+  transform: translateY(-6px);
+  box-shadow: var(--nl-shadow-lg);
+}
+/* Remove the old full-card colour flood on hover */
+.service .service-content::after { display: none; }
+
+/* Cards alternate the yellow and pink birds (blue is the brand colour) */
+.service .row > div:nth-child(odd)  .service-item { background: var(--nl-yellow-soft) !important; }
+.service .row > div:nth-child(even) .service-item { background: var(--nl-coral-soft)  !important; }
+
+/* Icons in a white disc instead of 6x floating glyphs */
+.service .service-item .fa-6x {
+  font-size: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--nl-shadow-sm);
+}
+.service .service-item .service-content-inner i,
+.service .service-item:hover .service-content-inner i { color: var(--nl-blue-deep) !important; }
+.service .service-item .service-content-inner p,
+.service .service-item:hover .service-content-inner p { color: var(--nl-ink) !important; font-size: 0.95rem; }
+.service .service-item .service-content-inner a.h4,
+.service .service-item:hover .service-content-inner a.h4 { color: var(--nl-blue-deep); text-decoration: none; }
+.service .service-item .service-content-inner a.h6 {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.8rem;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: var(--nl-pill);
+  color: var(--nl-blue-dark);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.service .service-item:hover .service-content-inner a.btn-primary {
+  background: var(--nl-blue-deep) !important;
+  color: #fff !important;
+}
+
+/* ---------- 10. Gallery ---------- */
+.events .events-item {
+  background: var(--nl-yellow) !important;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: var(--nl-shadow-sm);
+  transition: transform 0.3s var(--nl-ease), box-shadow 0.3s var(--nl-ease);
+}
+.events .events-item:hover { transform: translateY(-4px); box-shadow: var(--nl-shadow); }
+.events .row > div:nth-child(even) .events-item { background: var(--nl-coral) !important; }
+.events .events-item .events-img::after { background: rgba(27, 111, 134, 0.6); border-radius: 50%; }
+
+/* ---------- 11. Contact ---------- */
+.border.border-primary.rounded.bg-white {
+  border-width: 0 !important;
+  border-radius: var(--nl-radius) !important;
+  box-shadow: var(--nl-shadow-sm);
+}
+.map-container { border-radius: var(--nl-radius) !important; box-shadow: var(--nl-shadow-sm); }
+
+/* ---------- 12. Curriculum detail lists ---------- */
+.fa-check-circle { color: var(--nl-blue-deep) !important; }
+
+/* ---------- 13. Footer ---------- */
+.footer { background: var(--nl-footer); border-top-left-radius: var(--nl-radius-lg); border-top-right-radius: var(--nl-radius-lg); }
+.copyright a, .copyright a:hover { color: #fff; }
+
+/* ---------- 14. Playful accents (sparingly: About + programme sections only) ---------- */
+.container-fluid.service:not(.service-plain),
+.container-fluid.about { position: relative; overflow: hidden; }
+.container-fluid.service:not(.service-plain) > .container,
+.container-fluid.about > .container { position: relative; z-index: 1; }
+
+.container-fluid.service:not(.service-plain)::before,
+.container-fluid.about::before {
+  content: "";
+  position: absolute;
+  width: 380px; height: 380px;
+  top: -120px; right: -110px;
+  background: var(--nl-yellow);
+  opacity: 0.45;
+  border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%;
+  pointer-events: none;
+}
+.container-fluid.service:not(.service-plain)::after,
+.container-fluid.about::after {
+  content: "";
+  position: absolute;
+  width: 260px; height: 260px;
+  bottom: -90px; left: -80px;
+  background: var(--nl-coral);
+  opacity: 0.4;
+  border-radius: 45% 55% 40% 60% / 55% 45% 58% 42%;
+  pointer-events: none;
+}
+
+/* ---------- 15. Scroll reveal (replaces wow.js / animate.css) ----------
+   Existing "wow fadeIn" classes stay in the HTML; their animation is switched
+   off here and js/reveal.js drives a lighter fade-up. The header, hero and page
+   header are not hidden (they are above the fold).                           */
+.wow { visibility: visible !important; animation: none !important; }
+.js-reveal .wow:not(.fixed-top):not(.hero-header):not(.page-header):not(.tada) {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s var(--nl-ease), transform 0.6s var(--nl-ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.js-reveal .wow.is-visible:not(.fixed-top):not(.hero-header):not(.page-header):not(.tada) { opacity: 1; transform: none; }
+
+/* ---------- 16. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html, :root { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .service .service-item:hover,
+  .events .events-item:hover,
+  .btn.btn-primary:hover { transform: none; }
+}

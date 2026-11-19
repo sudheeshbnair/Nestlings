@@ -188,3 +188,30 @@ window.addEventListener('orientationchange', fitHeaderOffset);
 document.querySelectorAll('site-header img').forEach(function (img) {
     img.addEventListener('load', fitHeaderOffset);
 });
+
+
+/**
+ * Mobile menu: make sure it is closed whenever the page is left or restored.
+ * Without this, pressing Back restores the page from the browser's back/forward
+ * cache with the hamburger menu still open.
+ */
+function closeMobileMenu() {
+    const menu = document.getElementById('navbarCollapse');
+    if (!menu) return;
+    menu.classList.remove('show', 'collapsing');
+    menu.style.height = '';
+    const toggler = document.querySelector('site-header .navbar-toggler');
+    if (toggler) {
+        toggler.classList.add('collapsed');
+        toggler.setAttribute('aria-expanded', 'false');
+    }
+    fitHeaderOffset();
+}
+// Close as soon as a menu link is tapped (before the next page loads)
+document.querySelectorAll('site-header #navbarCollapse a[href]').forEach(function (a) {
+    a.addEventListener('click', closeMobileMenu);
+});
+// Close when leaving the page, so the cached snapshot is already closed
+window.addEventListener('pagehide', closeMobileMenu);
+// Close when the page is shown again from the back/forward cache
+window.addEventListener('pageshow', function (e) { if (e.persisted) closeMobileMenu(); });

@@ -72,6 +72,7 @@ class SiteHeader extends HTMLElement {
                                 <span class="text-primary">Have any questions?</span>
                                 <a href="tel:+917907822232"><span class="text-secondary">Call: +91-7907 82 22 32</span></a>
                             </div>
+                            <a href="https://wa.me/917907822232" target="_blank" rel="noopener" class="wa-btn wa-btn-icon align-self-center ms-3" aria-label="Chat with Nestlings on WhatsApp" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                         
                     </div>

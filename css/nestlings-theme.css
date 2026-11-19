@@ -302,3 +302,45 @@ a:hover { color: var(--nl-blue-dark); }
 @media (max-width: 767.98px) {
   .events .row.g-5 { --bs-gutter-x: 1.5rem; --bs-gutter-y: 1.5rem; }
 }
+
+/* ---------- 19. WhatsApp chat button (header) ---------- */
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #25d366;            /* WhatsApp brand green */
+  color: #06301a !important;      /* dark text: 8:1 contrast on the green */
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--nl-pill);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+  transition: transform 0.25s var(--nl-ease), box-shadow 0.25s var(--nl-ease), background-color 0.25s;
+}
+.wa-btn i { font-size: 1.35rem; }
+.wa-btn:hover, .wa-btn:focus {
+  background: #1ebe5b;
+  color: #06301a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 211, 102, 0.5);
+}
+/* Icon-only round button: identical on desktop and mobile */
+.wa-btn-icon {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  justify-content: center;
+  gap: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wa-btn-icon i { font-size: 1.9rem; line-height: 1; }
+/* Desktop header: keep "Have any questions?" on two tidy lines next to the button */
+@media (min-width: 1200px) {
+  .navbar .d-flex.me-4 { margin-right: 0 !important; }
+  .navbar .d-flex.me-4 .flex-column { white-space: nowrap; }
+  .navbar .navbar-nav .nav-link { padding-left: 10px; padding-right: 10px; }
+}

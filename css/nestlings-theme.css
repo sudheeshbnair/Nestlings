@@ -111,7 +111,7 @@ a:hover { color: var(--nl-blue-dark); }
   color: var(--nl-blue-deep) !important;
   border: 0 !important;
   border-radius: var(--nl-pill) !important;
-  padding: 0.35rem 1.1rem !important;
+  padding: 0.35rem 1.1rem 0.35rem calc(1.1rem + 0.06em) !important;
   font-family: "Montserrat", sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
@@ -294,4 +294,11 @@ a:hover { color: var(--nl-blue-dark); }
 /* ---------- 17. Mobile: header has no top bar, so reserve less space (JS refines this) ---------- */
 @media (max-width: 991.98px) {
   body { padding-top: 112px; }
+}
+
+/* ---------- 18. Gallery: keep the section (and its centred heading) inside the viewport ---------- */
+.container-fluid.events { overflow-x: hidden; }
+.events .text-center { text-align: center; }
+@media (max-width: 767.98px) {
+  .events .row.g-5 { --bs-gutter-x: 1.5rem; --bs-gutter-y: 1.5rem; }
 }

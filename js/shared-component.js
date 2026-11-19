@@ -148,7 +148,7 @@ class SiteFooter extends HTMLElement {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nestlings Premium Preschool</a>, All rights reserved.</span>
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nestlings Premium Preschool</a><span class="d-none d-md-inline">,</span><br class="d-md-none"> All rights reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                     </div>
@@ -166,3 +166,24 @@ class SiteFooter extends HTMLElement {
 
 customElements.define('site-header', SiteHeader);
 customElements.define('site-footer', SiteFooter);
+
+
+/**
+ * Keep the page content directly under the fixed header on every screen size.
+ * (style.css reserves a fixed 155px, which is right for desktop with the top bar
+ * but leaves a white gap on mobile where the top bar is hidden.)
+ */
+function fitHeaderOffset() {
+    const header = document.querySelector('site-header .fixed-top');
+    if (!header) return;
+    const menu = document.getElementById('navbarCollapse');
+    if (menu && menu.classList.contains('show')) return; // don't jump while the mobile menu is open
+    document.body.style.paddingTop = header.offsetHeight + 'px';
+}
+fitHeaderOffset();
+window.addEventListener('load', fitHeaderOffset);
+window.addEventListener('resize', fitHeaderOffset);
+window.addEventListener('orientationchange', fitHeaderOffset);
+document.querySelectorAll('site-header img').forEach(function (img) {
+    img.addEventListener('load', fitHeaderOffset);
+});

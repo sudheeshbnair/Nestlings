@@ -290,3 +290,8 @@ a:hover { color: var(--nl-blue-dark); }
   .events .events-item:hover,
   .btn.btn-primary:hover { transform: none; }
 }
+
+/* ---------- 17. Mobile: header has no top bar, so reserve less space (JS refines this) ---------- */
+@media (max-width: 991.98px) {
+  body { padding-top: 112px; }
+}

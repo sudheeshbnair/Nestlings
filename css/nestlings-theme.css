@@ -531,3 +531,145 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
 /* Contact: the section is now white, so tint the info cards (and drop the map's blue outline) to keep them distinct */
 .border.border-primary.rounded.bg-white { background: var(--nl-cream-2) !important; box-shadow: none; }
 .map-container, .border.border-primary.h-100.rounded.map-container { border-width: 0 !important; }
+
+/* ---------- 23. Curriculum detail pages: accordion by domain, quick facts, pager ---------- */
+.cur-note {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--nl-cream-2);
+  border-radius: 20px;
+}
+.cur-note p { margin: 0 0 0.4rem; }
+.cur-note p:last-child { margin-bottom: 0; }
+
+.cur-accordion { display: flex; flex-direction: column; gap: 0.85rem; }
+.cur-acc {
+  --tile: var(--nl-yellow-soft);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: var(--nl-shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.3s var(--nl-ease);
+}
+.cur-acc[open] { box-shadow: var(--nl-shadow); }
+/* a different pastel per learning area */
+.cur-acc:nth-of-type(6n + 1) { --tile: var(--nl-yellow-soft); }
+.cur-acc:nth-of-type(6n + 2) { --tile: var(--nl-coral-soft); }
+.cur-acc:nth-of-type(6n + 3) { --tile: var(--nl-blue-soft); }
+.cur-acc:nth-of-type(6n + 4) { --tile: var(--nl-orange-soft); }
+.cur-acc:nth-of-type(6n + 5) { --tile: var(--nl-leaf-soft); }
+.cur-acc:nth-of-type(6n + 6) { --tile: var(--nl-lilac-soft); }
+
+.cur-acc summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+.cur-acc summary::-webkit-details-marker { display: none; }
+.cur-acc summary:hover .cur-title { color: var(--nl-blue-dark); }
+.cur-ico {
+  flex: 0 0 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: var(--tile);
+  color: var(--nl-blue-dark);
+  font-size: 1.15rem;
+}
+.cur-title {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  color: var(--nl-blue-deep);
+}
+/* chevron */
+.cur-acc summary::after {
+  content: "";
+  margin-left: auto;
+  flex: 0 0 auto;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid var(--nl-blue-deep);
+  border-bottom: 2px solid var(--nl-blue-deep);
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--nl-ease);
+}
+.cur-acc[open] summary::after { transform: rotate(-135deg); }
+
+.cur-body { padding: 0 1.5rem 1.25rem calc(1.25rem + 46px + 1rem); }
+.cur-sub { margin: 1rem 0 0.5rem; font-family: "Montserrat", sans-serif; font-size: 1rem; font-weight: 700; color: var(--nl-ink); }
+.cur-sub:first-child { margin-top: 0.25rem; }
+
+/* real lists, one consistent check colour */
+.cur-list { list-style: none; margin: 0; padding: 0; }
+.cur-list li { position: relative; margin-bottom: 0.6rem; padding-left: 1.9rem; line-height: 1.55; }
+.cur-list li:last-child { margin-bottom: 0; }
+.cur-list li::before {
+  content: "\f058";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: var(--nl-blue-deep);
+}
+
+/* Quick facts sidebar */
+.cur-facts {
+  --tile: var(--nl-yellow-soft);
+  background: #fff;
+  border-radius: var(--nl-radius);
+  overflow: hidden;
+  box-shadow: var(--nl-shadow-sm);
+}
+@media (min-width: 992px) { .cur-facts { position: sticky; top: 180px; } }
+.cur-facts-head { background: var(--tile); padding: 1.25rem 1.5rem; }
+.cur-facts-title { margin: 0.6rem 0 0; font-size: 1.6rem; color: var(--nl-blue-dark); }
+.cur-facts-list { margin: 0; padding: 0.5rem 1.5rem; }
+.cur-facts-list > div { padding: 0.85rem 0; border-bottom: 1px solid rgba(15, 74, 92, 0.1); }
+.cur-facts-list > div:last-child { border-bottom: 0; }
+.cur-facts-list dt { font-size: 0.85rem; font-weight: 600; color: var(--nl-muted); }
+.cur-facts-list dt i { width: 1.25rem; color: var(--nl-blue-deep); }
+.cur-facts-list dd { margin: 0.15rem 0 0; font-weight: 600; color: var(--nl-ink); }
+.cur-facts-list dd small { font-weight: 400; color: var(--nl-muted); }
+.cur-facts-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.5rem 1.5rem 1.5rem; }
+.cur-all { font-weight: 600; text-decoration: none; }
+.cur-all:hover { text-decoration: underline; }
+
+/* Previous / next age group */
+.cur-pager { display: flex; gap: 1rem; margin-top: 2rem; }
+.cur-pager a {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 calc(50% - 0.5rem);
+  padding: 1rem 1.25rem;
+  background: var(--nl-cream-2);
+  border-radius: 20px;
+  text-decoration: none;
+  transition: transform 0.25s var(--nl-ease), box-shadow 0.25s var(--nl-ease);
+}
+.cur-pager a:hover { transform: translateY(-3px); box-shadow: var(--nl-shadow); }
+.cur-pager .cur-next { margin-left: auto; text-align: right; }
+.cur-pager-label { font-size: 0.85rem; font-weight: 600; color: var(--nl-muted); }
+.cur-pager-name { font-family: "Fredoka", sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--nl-blue-deep); }
+
+/* Overview cards: small meta line under the summary */
+.age-body .cur-meta { margin: -0.5rem 0 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--nl-muted); }
+.age-body .cur-meta i { margin-right: 0.35rem; color: var(--nl-blue-deep); }
+
+@media (max-width: 575.98px) {
+  .cur-body { padding: 0 1.25rem 1.25rem; }
+  .cur-title { font-size: 1.1rem; }
+  .cur-pager { flex-direction: column; }
+  .cur-pager a, .cur-pager .cur-next { flex-basis: auto; margin-left: 0; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cur-acc summary::after { transition: none; }
+  .cur-pager a:hover { transform: none; }
+}

@@ -666,7 +666,7 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
 @media (max-width: 767.98px) {
   .hero-header {
     display: block;
-    background: url(../img/banner.jpg) top center / 100% auto no-repeat, var(--nl-blue-dark);
+    background: url(../img/banner-sm.webp) top center / 100% auto no-repeat, var(--nl-blue-dark);
     min-height: 0;
     padding-top: calc(100vw * 768 / 1376 + 1.5rem) !important;
     padding-bottom: 1.75rem !important;
@@ -697,7 +697,7 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
     align-items: center;
     background:
       linear-gradient(90deg, rgba(15, 74, 92, .88) 0%, rgba(15, 74, 92, .62) 45%, rgba(15, 74, 92, 0) 64%),
-      url(../img/banner.jpg) right center / cover no-repeat;
+      url(../img/banner-sm.webp) right center / cover no-repeat;
     min-height: 340px;
     padding: 1.25rem 0 3.5rem !important;
   }
@@ -717,7 +717,7 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
 /* Phone: same banner as the other pages (whole photo, same height, no blue fade); text on the photo's left */
 @media (max-width: 767.98px) {
   .hero-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/banner.jpg) top center / 100% auto no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/banner-sm.webp) top center / 100% auto no-repeat;
     background-color: #2b2b2b;
     min-height: calc(100vw * 768 / 1376);
     padding: .75rem 0 !important;
@@ -731,4 +731,23 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
   }
   .hero-header .hero-wa { font-size: .68rem; padding: .4rem .75rem !important; }
   .hero-header .hero-tag { font-size: .68rem !important; padding: .25rem .7rem !important; right: .6rem; bottom: .5rem; }
+}
+
+/* Banner text visibility: white text on a deep-blue pill, stronger shadow on the headline */
+.hero-header .hero-tag {
+  background: rgba(15, 74, 92, .92) !important;
+  color: #fff !important;
+  border: 2px solid var(--nl-yellow);
+  text-shadow: none;
+}
+.hero-header .hero-title {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(0, 0, 0, .85), 0 2px 4px rgba(0, 0, 0, .9);
+}
+
+/* Smaller banner file on phones for the inner-page banners too */
+@media (max-width: 767.98px) {
+  .page-header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/banner-sm.webp);
+  }
 }

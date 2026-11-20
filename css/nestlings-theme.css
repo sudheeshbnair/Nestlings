@@ -620,28 +620,6 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
   color: var(--nl-blue-deep);
 }
 
-/* Quick facts sidebar */
-.cur-facts {
-  --tile: var(--nl-yellow-soft);
-  background: #fff;
-  border-radius: var(--nl-radius);
-  overflow: hidden;
-  box-shadow: var(--nl-shadow-sm);
-}
-@media (min-width: 992px) { .cur-facts { position: sticky; top: 180px; } }
-.cur-facts-head { background: var(--tile); padding: 1.25rem 1.5rem; }
-.cur-facts-title { margin: 0.6rem 0 0; font-size: 1.6rem; color: var(--nl-blue-dark); }
-.cur-facts-list { margin: 0; padding: 0.5rem 1.5rem; }
-.cur-facts-list > div { padding: 0.85rem 0; border-bottom: 1px solid rgba(15, 74, 92, 0.1); }
-.cur-facts-list > div:last-child { border-bottom: 0; }
-.cur-facts-list dt { font-size: 0.85rem; font-weight: 600; color: var(--nl-muted); }
-.cur-facts-list dt i { width: 1.25rem; color: var(--nl-blue-deep); }
-.cur-facts-list dd { margin: 0.15rem 0 0; font-weight: 600; color: var(--nl-ink); }
-.cur-facts-list dd small { font-weight: 400; color: var(--nl-muted); }
-.cur-facts-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.5rem 1.5rem 1.5rem; }
-.cur-all { font-weight: 600; text-decoration: none; }
-.cur-all:hover { text-decoration: underline; }
-
 /* Previous / next age group */
 .cur-pager { display: flex; gap: 1rem; margin-top: 2rem; }
 .cur-pager a {

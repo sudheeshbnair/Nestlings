@@ -689,3 +689,27 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
   .hero-header { padding-bottom: 4.5rem !important; }
   .hero-header .hero-tag { right: 1rem; bottom: 1.1rem; }
 }
+
+/* Phone: text stays ON the banner photo, in the left ~60% so the child (right) stays clear */
+@media (max-width: 767.98px) {
+  .hero-header {
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(90deg, rgba(15, 74, 92, .88) 0%, rgba(15, 74, 92, .62) 45%, rgba(15, 74, 92, 0) 64%),
+      url(../img/banner.jpg) right center / cover no-repeat;
+    min-height: 340px;
+    padding: 1.25rem 0 3.5rem !important;
+  }
+  .hero-header .row > [class*="col-"] { max-width: 62%; align-items: flex-start; text-align: left; }
+  .hero-header .hero-title { font-size: 1.35rem !important; line-height: 1.2; margin-bottom: 1rem !important; max-width: none; }
+  .hero-header .hero-wa { padding: .6rem 1rem !important; font-size: .8rem; }
+  .hero-header .hero-tag { font-size: .8rem !important; padding: .3rem .9rem !important; right: 1rem; bottom: .9rem; }
+}
+@media (max-width: 767.98px) {
+  .hero-header { overflow: hidden; }
+  .hero-header .row { --bs-gutter-x: 0; }
+  .hero-header .row > [class*="col-"] { max-width: 66%; padding: 0 12px; }
+  .hero-header .hero-wa { white-space: nowrap; font-size: .72rem; padding: .55rem .85rem !important; }
+}
+@media (max-width: 767.98px) { .hero-header .hero-title { font-size: 1.25rem !important; } }

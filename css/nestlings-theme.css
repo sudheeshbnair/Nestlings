@@ -651,3 +651,41 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
   .cur-acc summary::after { transition: none; }
   .cur-pager a:hover { transform: none; }
 }
+
+/* ---------- 24. Home banner content ---------- */
+.hero-header .hero-tag { margin-bottom: 1rem !important; font-weight: 600; font-size: 1.15rem !important; padding: .4rem 1.25rem !important; letter-spacing: .02em; }
+.hero-header .hero-title { font-size: clamp(2rem, 3.6vw, 2.9rem) !important; }
+.hero-header .hero-title { font-family: "Fredoka", sans-serif; font-weight: 700; line-height: 1.15; max-width: 15em; }
+.hero-header .hero-wa {
+  background: #25d366 !important; border-color: #25d366 !important; color: #06301a !important;
+  font-weight: 700; box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+}
+.hero-header .hero-wa:hover { background: #fff !important; border-color: #fff !important; }
+
+/* Phone: photo whole at the top (child's face clear), text centred on a panel below */
+@media (max-width: 767.98px) {
+  .hero-header {
+    display: block;
+    background: url(../img/banner.jpg) top center / 100% auto no-repeat, var(--nl-blue-dark);
+    min-height: 0;
+    padding-top: calc(100vw * 768 / 1376 + 1.5rem) !important;
+    padding-bottom: 1.75rem !important;
+  }
+  .hero-header .row > [class*="col-"] { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero-header .hero-tag { font-size: .95rem !important; padding: .35rem 1.1rem !important; }
+  .hero-header .hero-title { font-size: 1.65rem !important; margin-bottom: 1.25rem !important; }
+  .hero-header .hero-wa { padding: .75rem 1.4rem !important; font-size: .95rem; }
+}
+
+/* Tagline pinned to the bottom-right corner of the banner */
+.hero-header { position: relative; }
+.hero-header .hero-tag {
+  position: absolute;
+  right: max(1rem, calc((100vw - min(100vw, 1320px)) / 2 + 12px));
+  bottom: 1.5rem;
+  margin: 0 !important;
+}
+@media (max-width: 767.98px) {
+  .hero-header { padding-bottom: 4.5rem !important; }
+  .hero-header .hero-tag { right: 1rem; bottom: 1.1rem; }
+}

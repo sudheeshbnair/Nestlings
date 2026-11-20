@@ -10,7 +10,7 @@
   /* Palette sampled from the logo: the three birds (yellow, pink, blue) */
   --nl-blue-deep: #1b6f86;          /* primary text/buttons: deeper shade of the blue bird (5.7:1 on white). The exact bird blue is --nl-blue */
   --nl-blue-dark: #0f4a5c;     /* hover / dark bars */
-  --nl-accent: #b8520a;        /* orange from the wordmark, darkened for text (5:1 on cream) */
+  --nl-accent: #9c4407;        /* orange from the wordmark, darkened for text (5.4:1+ on cream, pink and yellow) */
   --nl-ink: #1d3640;           /* body text */
   --nl-muted: #4c6670;
 
@@ -39,7 +39,7 @@
   /* Re-point Bootstrap's variables so everything in style.css that uses
      var(--bs-primary / secondary / light / dark) follows the new palette */
   --bs-primary: #1b6f86;
-  --bs-secondary: #b8520a;
+  --bs-secondary: #9c4407;
   --bs-light: #fff1cf;
   --bs-dark: #0f4a5c;
 }
@@ -512,7 +512,9 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
 
 /* One accent for headings: every section headline gets the same small coral squiggle */
 .container-fluid:not(.hero-header):not(.page-header):not(.footer) h1.display-3::after,
-.container-fluid:not(.hero-header):not(.page-header):not(.footer) h1.display-5::after {
+.container-fluid:not(.hero-header):not(.page-header):not(.footer) h1.display-5::after,
+.container-fluid:not(.hero-header):not(.page-header):not(.footer) h2.display-3::after,
+.container-fluid:not(.hero-header):not(.page-header):not(.footer) h2.display-5::after {
   content: "";
   display: block;
   width: 96px;
@@ -522,7 +524,9 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
 }
 /* centred headlines centre the squiggle; left-aligned ones keep it at the left */
 .text-center h1.display-3::after,
-.text-center h1.display-5::after { margin-left: auto; margin-right: auto; }
+.text-center h1.display-5::after,
+.text-center h2.display-3::after,
+.text-center h2.display-5::after { margin-left: auto; margin-right: auto; }
 
 @media (max-width: 767.98px) {
   :root { --nl-curve: 28px; }
@@ -751,3 +755,11 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/banner-sm.webp);
   }
 }
+
+/* ---------- 25. Accessibility: contrast and tap targets ---------- */
+/* Section labels: deep-blue text on the yellow pill (6.4:1) */
+.text-primary.title-border-radius { color: var(--nl-blue-dark) !important; }
+/* Footer body text: dark ink on the pink footer (10:1) */
+.footer .text-body, .footer .text-dark, .footer p { color: var(--nl-ink) !important; }
+/* Footer social buttons: 44px touch targets */
+.footer-icon .btn-sm-square { width: 44px; height: 44px; }

@@ -24,7 +24,7 @@ class SiteHeader extends HTMLElement {
             <div class="container topbar bg-primary d-none d-lg-block py-2" style="border-radius: 0 40px">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">NGO Quarters, Kakkanad, Kochi</a></small>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <span class="text-white">NGO Quarters, Kakkanad, Kochi</span></small>
                         <!--<small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>-->
                     </div>
                     <!--<div class="top-link pe-2">
@@ -38,8 +38,8 @@ class SiteHeader extends HTMLElement {
             <div class="container px-0">
                 <nav class="navbar navbar-light navbar-expand-xl py-3">
                     <a href="index.html" class="navbar-brand"><img src="img/logo.png" srcset="img/logo.png 1x, img/logo@2x.png 2x" width="300" height="75" alt="Nestlings Premium Preschool"></a>
-                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars text-primary"></span>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation menu">
+                        <span class="fa fa-bars text-primary" aria-hidden="true"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
@@ -61,8 +61,8 @@ class SiteHeader extends HTMLElement {
                         </div>
                         <div class="d-flex me-4">
                             <div id="phone-tada" class="d-flex align-items-center justify-content-center">
-                                <a href="tel:+917907822232" class="position-relative wow tada" data-wow-delay=".9s" >
-                                    <i class="fa fa-phone-alt text-primary fa-2x me-4"></i>
+                                <a href="tel:+917907822232" class="position-relative wow tada" data-wow-delay=".9s" aria-label="Call Nestlings on 7907822232">
+                                    <i class="fa fa-phone-alt text-primary fa-2x me-4" aria-hidden="true"></i>
                                     <div class="position-absolute" style="top: -7px; left: 20px;">
                                         <span><i class="fa fa-comment-dots text-secondary"></i></span>
                                     </div>
@@ -70,9 +70,9 @@ class SiteHeader extends HTMLElement {
                             </div>
                             <div class="d-flex flex-column pe-3 border-end border-primary">
                                 <span class="text-primary">Have any questions?</span>
-                                <a href="tel:+917907822232"><span class="text-secondary">Call: +91-7907 82 22 32</span></a>
+                                <a href="tel:+917907822232"><span class="text-secondary">Call: 7907822232</span></a>
                             </div>
-                            <a href="https://wa.me/917907822232" target="_blank" rel="noopener" class="wa-btn wa-btn-icon align-self-center ms-3" aria-label="Chat with Nestlings on WhatsApp" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/917907822232?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions" target="_blank" rel="noopener" class="wa-btn wa-btn-icon align-self-center ms-3" aria-label="Chat with Nestlings on WhatsApp" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                         
                     </div>
@@ -103,8 +103,8 @@ class SiteFooter extends HTMLElement {
                             <a href="index.html" class="navbar-brand"><img src="img/logo.png" srcset="img/logo.png 1x, img/logo@2x.png 2x" width="300" height="75" alt="Nestlings Premium Preschool"></a><br><br>
                             
                             <div class="footer-icon d-flex">
-                                    <a  href="https://www.facebook.com/profile.php?id=61581985345252" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/nestlings_kochi/" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=61581985345252" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" target="_blank" rel="noopener" aria-label="Nestlings on Facebook (opens in a new tab)"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                                    <a href="https://www.instagram.com/nestlings_kochi/" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" target="_blank" rel="noopener" aria-label="Nestlings on Instagram (opens in a new tab)"><i class="fab fa-instagram" aria-hidden="true"></i></a>
 <!--                                    <a href="#" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i class="fab fa-twitter"></i></a>
                                     
                                     <a href="#" class="btn btn-primary btn-sm-square rounded-circle text-white"><i class="fab fa-linkedin-in"></i></a>-->
@@ -116,7 +116,7 @@ class SiteFooter extends HTMLElement {
                     
                     <div class="col-md-6 col-lg-4 col-xl-4">
                         <div class="footer-item">
-                        <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">TIMING</h4>
+                        <p class="h4 text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">TIMING</p>
                             <div class="d-flex flex-column p-4 ps-5 text-dark border border-primary" 
                             style="border-radius: 50% 20% / 10% 40%;">
                                 <p><b>Pre-School:</b> 09:00 AM to 01:30 PM<br>Monday to Friday</p>
@@ -127,12 +127,12 @@ class SiteFooter extends HTMLElement {
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-4">
                         <div class="footer-item">
-                            <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">LOCATION</h4>
+                            <p class="h4 text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">LOCATION</p>
                             <div class="d-flex flex-column align-items-start">
-                                <a class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i>NGO Quarters, Kakkanad, Kochi</a>
-                                <a href="tel:+917907822232" class="text-start rounded-0 text-body mb-4"><i class="fa fa-phone-alt text-primary me-2"></i>+91-7907 82 22 32</a>
-                                <a href="mailto:nestlingskochi@gmail.com" target="_blank" class="text-start rounded-0 text-body mb-4"><i class="fas fa-envelope text-primary me-2"></i>nestlingskochi@gmail.com</a>
-                                <a class="text-start rounded-0 text-body mb-4"><i class="fa fa-clock text-primary me-2"></i>Monday-Saturday</a>
+                                <span class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2" aria-hidden="true"></i>NGO Quarters, Kakkanad, Kochi</span>
+                                <a href="tel:+917907822232" class="text-start rounded-0 text-body mb-4"><i class="fa fa-phone-alt text-primary me-2"></i>7907822232</a>
+                                <a href="mailto:nestlingskochi@gmail.com" class="text-start rounded-0 text-body mb-4"><i class="fas fa-envelope text-primary me-2"></i>nestlingskochi@gmail.com</a>
+                                <span class="text-start text-body mb-4"><i class="fa fa-clock text-primary me-2" aria-hidden="true"></i>Monday-Saturday</span>
                                 
                             </div>
                         </div>
@@ -149,7 +149,7 @@ class SiteFooter extends HTMLElement {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nestlings Premium Preschool</a><span class="d-none d-md-inline">,</span><br class="d-md-none"> All rights reserved.</span>
+                        <span class="text-light"><i class="fas fa-copyright text-light me-2" aria-hidden="true"></i>Nestlings Premium Preschool<span class="d-none d-md-inline">,</span><br class="d-md-none"> All rights reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                     </div>
@@ -160,7 +160,7 @@ class SiteFooter extends HTMLElement {
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top" aria-label="Back to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>   
         `;
     }
 }

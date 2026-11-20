@@ -713,3 +713,22 @@ body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header
   .hero-header .hero-wa { white-space: nowrap; font-size: .72rem; padding: .55rem .85rem !important; }
 }
 @media (max-width: 767.98px) { .hero-header .hero-title { font-size: 1.25rem !important; } }
+
+/* Phone: same banner as the other pages (whole photo, same height, no blue fade); text on the photo's left */
+@media (max-width: 767.98px) {
+  .hero-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/banner.jpg) top center / 100% auto no-repeat;
+    background-color: #2b2b2b;
+    min-height: calc(100vw * 768 / 1376);
+    padding: .75rem 0 !important;
+  }
+  .hero-header .row > [class*="col-"] { max-width: 60%; }
+  .hero-header .hero-title {
+    font-size: clamp(.95rem, 4.2vw, 1.2rem) !important;
+    line-height: 1.2;
+    margin-bottom: .6rem !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, .8);
+  }
+  .hero-header .hero-wa { font-size: .68rem; padding: .4rem .75rem !important; }
+  .hero-header .hero-tag { font-size: .68rem !important; padding: .25rem .7rem !important; right: .6rem; bottom: .5rem; }
+}

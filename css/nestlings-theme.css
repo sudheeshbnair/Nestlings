@@ -19,6 +19,10 @@
   --nl-blue:   #48b4cc;        /* blue bird */
   --nl-yellow-soft: #ffe9a6;   /* tints used as card backgrounds (keep text readable) */
   --nl-coral-soft:  #fbcfc8;
+  --nl-blue-soft:   #c3e8f1;
+  --nl-orange-soft: #ffd9b0;   /* soft orange from the wordmark */
+  --nl-leaf-soft:   #dcebb0;   /* soft green from the nest leaves */
+  --nl-lilac-soft:  #ddd6f3;   /* soft purple from the "PREMIUM PRESCHOOL" lettering */
 
   --nl-cream: #fffbf1;
   --nl-cream-2: #fff1cf;
@@ -395,3 +399,135 @@ a:hover { color: var(--nl-blue-dark); }
 @media (prefers-reduced-motion: reduce) {
   .gallery-item:hover img, .gallery-item:focus-visible img { transform: none; }
 }
+
+/* ---------- 21. Age-group cards (home page): pastel tile + age pill ---------- */
+.age-item {
+  --tile: var(--nl-yellow-soft);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: var(--nl-radius);   /* 24px */
+  overflow: hidden;
+  box-shadow: var(--nl-shadow-sm);
+  transition: transform 0.3s var(--nl-ease), box-shadow 0.3s var(--nl-ease);
+}
+.age-item:hover { transform: translateY(-6px); box-shadow: var(--nl-shadow-lg); }
+
+.age-infants   { --tile: var(--nl-yellow-soft); }
+.age-toddlers  { --tile: var(--nl-coral-soft); }
+.age-playgroup { --tile: var(--nl-blue-soft); }
+.age-nursery   { --tile: var(--nl-orange-soft); }
+.age-lkg       { --tile: var(--nl-leaf-soft); }
+.age-ukg       { --tile: var(--nl-lilac-soft); }
+.age-vision    { --tile: var(--nl-yellow-soft); }
+.age-mission   { --tile: var(--nl-coral-soft); }
+
+.age-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  min-height: 150px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--tile);
+  overflow: hidden;
+  text-decoration: none;
+}
+/* two soft circles as a quiet decoration */
+.age-tile::before, .age-tile::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transition: transform 0.5s var(--nl-ease);
+  pointer-events: none;
+}
+.age-tile::before { width: 130px; height: 130px; top: -40px; right: -30px; }
+.age-tile::after  { width: 70px;  height: 70px;  top: 50px;  right: 60px; opacity: 0.7; }
+.age-item:hover .age-tile::before { transform: scale(1.15); }
+.age-item:hover .age-tile::after  { transform: scale(1.25); }
+
+.age-pill {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: var(--nl-pill);
+  color: var(--nl-blue-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.age-name {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--nl-blue-dark);
+  font-size: clamp(1.6rem, 2vw + 0.8rem, 2rem);
+}
+
+.age-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.age-body p { margin: 0 0 1.25rem; color: var(--nl-ink); font-size: 0.95rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .age-item:hover { transform: none; }
+  .age-item:hover .age-tile::before, .age-item:hover .age-tile::after { transform: none; }
+}
+
+/* Vision / Mission: shorter tile, title only (no age pill) */
+.age-tile-sm { min-height: 110px; justify-content: center; }
+
+/* ---------- 22. Section rhythm: alternating backgrounds, curved dividers, one heading accent ----------
+   Content sections are direct children of <body> (after the banner). They cycle
+   white -> soft cream -> soft sky, regardless of which page they are on.            */
+:root {
+  --nl-sky-pastel: #e8f6fb;
+  --nl-curve: 48px;
+}
+body > div.container-fluid:not(.hero-header):not(.page-header) {
+  position: relative;               /* later sections paint over earlier ones */
+}
+body > div.container-fluid:nth-of-type(3n + 2):not(.hero-header):not(.page-header) { background: #fff !important; }
+body > div.container-fluid:nth-of-type(3n + 3):not(.hero-header):not(.page-header) { background: var(--nl-cream-2) !important; }
+body > div.container-fluid:nth-of-type(3n + 4):not(.hero-header):not(.page-header) { background: var(--nl-sky-pastel) !important; }
+
+/* Curved divider: 2nd and later content sections round off their top edge and
+   tuck up under the section above (the first section meets the banner flat). */
+body > div.container-fluid:nth-of-type(n + 3):not(.hero-header):not(.page-header) {
+  margin-top: calc(var(--nl-curve) * -1);
+  border-top-left-radius: 50% var(--nl-curve);
+  border-top-right-radius: 50% var(--nl-curve);
+}
+/* Footer curves up into the last section too */
+.footer { position: relative; margin-top: calc(var(--nl-curve) * -0.66); border-top-left-radius: 50% var(--nl-curve); border-top-right-radius: 50% var(--nl-curve); }
+
+/* One accent for headings: every section headline gets the same small coral squiggle */
+.container-fluid:not(.hero-header):not(.page-header):not(.footer) h1.display-3::after,
+.container-fluid:not(.hero-header):not(.page-header):not(.footer) h1.display-5::after {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 12px;
+  margin-top: 0.7rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 12'%3E%3Cpath d='M2 6 Q14 -2 26 6 T50 6 T74 6 T94 6' fill='none' stroke='%23f09084' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+/* centred headlines centre the squiggle; left-aligned ones keep it at the left */
+.text-center h1.display-3::after,
+.text-center h1.display-5::after { margin-left: auto; margin-right: auto; }
+
+@media (max-width: 767.98px) {
+  :root { --nl-curve: 28px; }
+}
+
+/* Contact: the section is now white, so tint the info cards (and drop the map's blue outline) to keep them distinct */
+.border.border-primary.rounded.bg-white { background: var(--nl-cream-2) !important; box-shadow: none; }
+.map-container, .border.border-primary.h-100.rounded.map-container { border-width: 0 !important; }
